@@ -1,0 +1,663 @@
+<!--
+SINGLE-FILE APPLE-STYLE OPERATING SYSTEM WEBSITE
+All content, styles, and scripts are combined in this one file.
+Save as: index.html
+Open in browser.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Operating Systems</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Inter,sans-serif;scroll-behavior:smooth;}
+:root{--bg:#000;--text:#ffffff;--sub:#aaa;--card:rgba(255,255,255,0.06);}
+.light{--bg:#fff;--text:#000;--sub:#555;--card:#f2f2f2;}
+body{background:var(--bg);color:var(--text);transition:0.4s;}
+a{text-decoration:none;color:inherit;}
+
+nav{position:fixed;top:0;width:100%;padding:15px 12%;display:flex;justify-content:space-between;align-items:center;background:rgba(0,0,0,0.6);backdrop-filter:blur(20px);z-index:1000;}
+nav h1{font-weight:800;font-size:20px;}
+nav a{margin-left:20px;color:var(--sub);}nav a:hover{color:var(--text);}nav button{margin-left:20px;padding:5px 10px;border-radius:20px;border:none;cursor:pointer;}
+
+section{padding:120px 12%;}
+.hero{height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;background:radial-gradient(circle at top,#111,#000);} 
+.hero h2{font-size:60px;font-weight:800;} .hero p{color:var(--sub);max-width:700px;margin-top:20px;font-size:20px;}
+.btn{margin-top:40px;padding:12px 30px;background:#fff;color:#000;border-radius:30px;display:inline-block;}
+
+.title{text-align:center;margin-bottom:50px;} .title h2{font-size:42px;} .title p{color:var(--sub);margin-top:10px;}
+
+.card{background:var(--card);border-radius:20px;padding:30px;margin-bottom:40px;}
+
+.reveal{opacity:0;transform:translateY(40px);transition:1s;} .reveal.active{opacity:1;transform:translateY(0);} 
+
+.diagram{max-width:400px;margin:30px auto;} .layer{padding:15px;margin:10px;border-radius:10px;background:var(--card);cursor:pointer;} .info{margin-top:20px;font-size:18px;color:var(--sub);} 
+
+footer{text-align:center;padding:40px;color:var(--sub);border-top:1px solid #222;}
+</style>
+</head>
+<body>
+
+<nav>
+<h1>DEVI</h1>
+<div>
+<a href="#about">About OS</a>
+<a href="#functions">Functions</a>
+<a href="#types">Types</a>
+<a href="#components">Components</a>
+<a href="#memory">Memory</a>
+<a href="#process">Processes</a>
+<a href="#files">File Systems</a>
+<a href="#security">Security</a>
+<a href="#architecture">Kernel</a>
+<a href="#future">Future</a>
+<button id="themeToggle">Theme</button>
+</div>
+</nav>
+
+<section class="hero reveal">
+<h2>The Operating System</h2>
+<p>The invisible intelligence that powers every computer, smartphone, server, and supercomputer. Elegant. Essential. Everywhere.</p>
+<a href="#about" class="btn">Begin Learning</a>
+</section>
+
+<!-- ================= ABOUT ================= -->
+<section id="about" class="reveal">
+<div class="title"><h2>What is an Operating System?</h2><p>The complete foundation of computing</p></div>
+<div class="card">
+    <h2>1. What is an Operating System?</h2>
+    <br>
+   <div style="display:flex; justify-content:center; align-items:center; height:386px;">
+   <img src="operatingsystem.jpg" style="width:686px;">
+</div>
+
+<br>
+<p>
+An Operating System (OS) is system software that acts as an intermediary between computer hardware and user applications. It provides an environment where software can execute safely, efficiently, and conveniently. Without an OS, computer hardware is merely an inert collection of electronic circuits incapable of meaningful work. The operating system transforms raw hardware into a usable machine by managing resources and abstracting complex hardware details.
+
+Historically, early computers in the 1940s and 1950s had no operating systems. Users manually loaded programs using punched cards or switches. This was inefficient and error-prone. The first batch operating systems were developed to automate job execution, allowing multiple programs to be processed sequentially without manual intervention. Later, time-sharing operating systems allowed many users to interact simultaneously with a single computer, leading to the modern concept of multitasking and multiuser environments.
+
+Modern operating systems perform several crucial tasks. They manage the CPU by scheduling processes. They control memory allocation to ensure programs do not interfere with each other. They provide file systems to store and retrieve data reliably. They manage input and output devices through standardized drivers. They also implement security mechanisms to protect data and system integrity.
+
+Operating systems exist in various forms: desktop OS like Windows and macOS, server OS like Linux and UNIX, mobile OS like Android and iOS, and real-time OS used in embedded systems. Regardless of form, all operating systems share the same fundamental goal: to provide a stable, efficient, and secure environment for computing.
+
+<br>In computer science, understanding operating systems is essential because it reveals how software interacts with hardware. Concepts like processes, threads, scheduling, memory paging, synchronization, and file management are foundational to advanced topics such as cloud computing, cybersecurity, distributed systems, and artificial intelligence infrastructure.
+</p>
+</div>
+</section>
+
+<!-- ================= FUNCTIONS ================= -->
+<section id="functions" class="reveal">
+<div class="title"><h2>Core Functions of an Operating System</h2></div>
+<div class="card">
+    <img src="functions.png" style="width:100%; max-width:686px; height:auto;">
+    <p> 
+Process Management is responsible for creating, scheduling, and terminating processes. A process is a program in execution. The OS allocates CPU time using scheduling algorithms such as First-Come-First-Serve (FCFS), Shortest Job First (SJF), Priority Scheduling, and Round Robin. Efficient scheduling ensures responsiveness and fairness in multitasking environments.
+
+Memory Management handles allocation and deallocation of main memory. Since physical memory is limited, operating systems use techniques like paging and segmentation to allow programs larger than available RAM to execute. Virtual memory creates an illusion of unlimited memory by using disk space as an extension of RAM.
+
+File System Management organizes data into files and directories. It controls storage allocation, naming, permissions, and access rights. File systems such as NTFS, FAT32, ext4, and APFS define how data is stored and retrieved efficiently and safely.
+
+Device Management coordinates communication between hardware and software. The OS uses device drivers to interact with printers, disks, network cards, and peripherals. It ensures conflict-free device sharing among processes.
+
+Security and Protection ensure that unauthorized users cannot access restricted resources. Authentication, access control lists, encryption, and sandboxing protect system integrity and user data.
+
+Networking allows computers to communicate across local and global networks. Modern operating systems include network stacks that implement protocols such as TCP/IP, enabling internet connectivity and distributed computing.
+<p>
+An Operating System (OS) performs a set of essential functions that enable a computer to operate efficiently, securely, and conveniently. It acts as a resource manager, a control program, and an interface between users and hardware. Without these core functions, modern computing systems would not be practical or reliable.
+</p>
+<br>
+<p>
+<b>1. Process Management:</b> Process management is one of the primary responsibilities of an operating system. A process is a program in execution, and the OS controls its entire lifecycle — from creation to termination. The operating system allocates CPU time to processes using scheduling algorithms such as First-Come-First-Serve (FCFS), Shortest Job First (SJF), Priority Scheduling, and Round Robin. It also handles context switching, allowing multiple processes to share the CPU effectively. Additionally, the OS manages inter-process communication and synchronization to ensure that processes cooperate correctly without conflicts or deadlocks.
+</p>
+
+<p>
+<b>2. Memory Management:</b> Memory management ensures efficient utilization of main memory (RAM). The operating system keeps track of which parts of memory are in use and which are free. It allocates memory to processes when they start and deallocates it when they finish. Since physical memory is limited, the OS uses techniques such as paging and segmentation to run large programs. Virtual memory allows the system to use disk storage as an extension of RAM, enabling the execution of programs larger than available physical memory. Proper memory management prevents data corruption and improves system performance.
+</p>
+
+<p>
+<b>3. File System Management:</b> The file system is responsible for organizing and storing data on storage devices. The operating system provides a hierarchical structure of directories and files, making it easy for users and programs to store and retrieve information. It manages file naming, access permissions, file allocation, and data integrity. Common file systems like NTFS, ext4, and APFS are designed to ensure efficient storage, fast access, and protection against data loss. The OS also handles buffering and caching to improve file access speed.
+</p>
+
+<p>
+<b>4. Device Management:</b> An operating system manages communication between software and hardware components. Since applications cannot directly control hardware devices, the OS uses device drivers as intermediaries. Device management includes handling input/output operations, allocating devices to processes, and resolving conflicts when multiple programs request the same hardware resource. The OS also monitors device status and ensures correct data transfer between memory and peripheral devices.
+</p>
+
+<p>
+<b>5. Security and Protection:</b> Security is a critical function of modern operating systems. The OS protects system resources and user data from unauthorized access. It implements authentication mechanisms such as passwords and biometric verification. Access control policies determine which users or programs can access specific files and devices. Encryption techniques safeguard sensitive data during storage and transmission. Additionally, modern OS include firewalls, secure boot processes, and malware protection to maintain system integrity.
+</p>
+
+<p>
+<b>6. User Interface Management:</b> The operating system provides an interface through which users interact with the computer. This can be a Command-Line Interface (CLI), where users type commands, or a Graphical User Interface (GUI), where users interact with icons and windows. The user interface hides hardware complexity and makes computing accessible to everyone, from beginners to professionals.
+</p>
+
+<p>
+<b>7. Networking:</b> Most operating systems include built-in networking capabilities. They manage communication protocols that allow computers to connect over local networks and the internet. The OS handles data transmission, error checking, routing, and network security. This function enables services such as web browsing, cloud computing, online gaming, and remote collaboration.
+</p>
+
+<p>
+<b>In Summary:</b> The operating system is the backbone of every computing device. Its core functions — process management, memory management, file system organization, device control, security, user interaction, and networking — work together to create a stable and efficient computing environment. Understanding these functions is fundamental to mastering computer science and modern technology.
+</p>
+
+</p></div>
+</section>
+
+<!-- ================= TYPES ================= -->
+<section id="types" class="reveal">
+<div class="title"><h2>Types of Operating Systems</h2></div>
+<div class="card">
+    <img src="types.jpeg" style="width:100%; max-width:686px; height:auto;">
+    <br>
+    <p>
+Batch Operating Systems execute jobs in groups without direct user interaction. Early mainframe computers used batch OS to process payrolls and large calculations.
+
+Time-Sharing Operating Systems allow multiple users to interact simultaneously. The CPU switches rapidly between users, giving the illusion of parallel execution.
+
+Real-Time Operating Systems (RTOS) guarantee precise response times. They are used in medical equipment, aircraft control, and industrial automation where delays can cause failures.
+
+Distributed Operating Systems manage a group of networked computers as if they were a single system. They handle load balancing, distributed file systems, and remote process execution.
+
+Embedded Operating Systems run on specialized hardware like smart appliances, IoT devices, routers, and automotive systems. They are optimized for efficiency and reliability.
+
+Mobile Operating Systems such as Android and iOS are designed for touch interfaces, battery efficiency, and wireless connectivity.
+<br>
+<p>
+Operating systems are classified into different types based on how they manage hardware resources, handle user interaction, and execute programs. Each type of operating system is designed to meet specific computing requirements, ranging from simple single-task systems to complex distributed environments. Understanding these categories provides insight into how computing evolved and how modern systems are designed for different purposes.
+</p>
+
+<p>
+<b>1. Batch Operating Systems:</b> Batch operating systems were among the earliest forms of OS. In this system, jobs with similar requirements are grouped into batches and executed sequentially without user interaction. Users submit programs, and the OS processes them one after another. Batch systems improved computer utilization but lacked interactivity. They were commonly used in mainframe computers for tasks like payroll and large data processing.
+</p>
+
+<p>
+<b>2. Time-Sharing Operating Systems:</b> Time-sharing operating systems allow multiple users to interact with a computer system simultaneously. The CPU rapidly switches between user programs, giving the illusion that each user has a dedicated system. This type of OS introduced multitasking and improved responsiveness. Modern desktop and server operating systems are based on time-sharing principles.
+</p>
+
+<p>
+<b>3. Real-Time Operating Systems (RTOS):</b> Real-time operating systems are designed to process data and provide responses within strict time constraints. They are used in critical systems where delays can cause failures, such as medical devices, aircraft control systems, robotics, and industrial automation. RTOS ensures predictable performance and high reliability.
+</p>
+
+<p>
+<b>4. Distributed Operating Systems:</b> A distributed operating system manages a group of networked computers and makes them appear as a single system to the user. It coordinates resource sharing, process execution, and data management across multiple machines. Distributed OS are essential in cloud computing, data centers, and high-performance computing environments.
+</p>
+
+<p>
+<b>5. Network Operating Systems:</b> Network operating systems focus on providing services over a network. They manage shared resources such as files, printers, and user accounts across connected computers. Unlike distributed OS, each machine retains its identity while sharing resources. Examples include Windows Server and UNIX-based server systems.
+</p>
+
+<p>
+<b>6. Embedded Operating Systems:</b> Embedded operating systems are designed for dedicated hardware devices with specific tasks. They run on devices like smart TVs, routers, washing machines, digital cameras, and IoT sensors. Embedded OS are lightweight, efficient, and highly reliable, often operating with limited memory and processing power.
+</p>
+
+<p>
+<b>7. Mobile Operating Systems:</b> Mobile operating systems are optimized for smartphones and tablets. They manage touch-based interfaces, wireless connectivity, and power efficiency. Android and iOS are the most widely used mobile operating systems, supporting millions of apps and services.
+</p>
+
+<p>
+<b>8. Single-User and Multi-User Operating Systems:</b> Single-user operating systems allow only one user at a time, while multi-user operating systems enable multiple users to work simultaneously. Multi-user systems are common in servers and enterprise environments.
+</p>
+
+<p>
+<b>9. Multitasking and Multiprocessing Operating Systems:</b> Multitasking OS allow multiple programs to run concurrently on a single CPU, while multiprocessing OS use multiple processors for parallel execution. These features improve system performance and efficiency in modern computers.
+</p>
+
+<p>
+<b>In Summary:</b> Each type of operating system is designed to address specific computing needs. From early batch systems to modern cloud-based distributed systems, operating systems have continuously evolved to provide greater performance, reliability, and user convenience. Understanding these types helps in selecting the right OS for different applications and environments.
+</p>
+
+</p>
+</div>
+</section>
+
+<!-- ================= COMPONENTS ================= -->
+<section id="components" class="reveal">
+<div class="title"><h2>Internal Components of an OS</h2></div>
+<div class="card"><p>
+The Kernel is the core of the operating system. It manages system resources, handles system calls, and enforces security. Kernels can be monolithic, microkernel-based, or hybrid.
+
+The Shell provides an interface between the user and the kernel. It can be command-line based (like Bash) or graphical (like Windows Explorer).
+
+System Libraries provide standard functions that applications use to request services from the kernel.
+
+Device Drivers allow the OS to communicate with hardware devices in a standardized way.
+
+File System modules organize data storage and access mechanisms.
+<br>
+<p>
+The internal components of an operating system define how it is structured and how it interacts with hardware and software. Each component performs specialized functions that together ensure smooth system operation. Understanding these internal parts is essential for learning how operating systems control resources and provide services to applications.
+</p>
+
+<p>
+<b>1. Kernel:</b> The kernel is the core and most critical component of an operating system. It directly interacts with hardware and manages system resources such as CPU, memory, and I/O devices. The kernel handles system calls from applications, manages process scheduling, controls memory allocation, and enforces security. Depending on design, kernels may be monolithic (all services inside the kernel), microkernel-based (minimal core with external services), or hybrid (combination of both). The kernel operates in privileged mode, ensuring full control over the system.
+</p>
+
+<p>
+<b>2. Shell:</b> The shell is the interface between the user and the kernel. It receives user commands and translates them into system calls that the kernel can execute. Shells can be command-line interfaces (CLI) such as Bash or PowerShell, or graphical user interfaces (GUI) such as Windows Desktop or macOS Finder. The shell hides low-level system complexity and provides a convenient way for users to interact with the computer.
+</p>
+
+<p>
+<b>3. System Libraries:</b> System libraries provide a collection of standard functions that applications use to request services from the operating system. Instead of directly accessing the kernel, programs call library functions that simplify system call usage. These libraries improve efficiency, portability, and program development speed.
+</p>
+
+<p>
+<b>4. Device Drivers:</b> Device drivers are specialized programs that allow the operating system to communicate with hardware devices. Since different hardware components have unique control mechanisms, drivers act as translators between hardware and the OS. They handle input/output operations for devices such as printers, keyboards, disks, network cards, and displays.
+</p>
+
+<p>
+<b>5. File System Manager:</b> The file system manager controls how data is stored, organized, and retrieved on storage devices. It manages directory structures, file permissions, storage allocation, and data integrity. This component ensures that users and applications can safely store and access information.
+</p>
+
+<p>
+<b>6. Process Manager:</b> The process manager handles creation, execution, scheduling, and termination of processes. It ensures efficient CPU utilization and coordinates multitasking. It also manages inter-process communication and synchronization to prevent conflicts and ensure system stability.
+</p>
+
+<p>
+<b>7. Memory Manager:</b> The memory manager oversees allocation and deallocation of memory space to processes. It implements techniques such as paging, segmentation, and virtual memory. This component ensures optimal use of RAM and prevents memory-related errors.
+</p>
+
+<p>
+<b>8. I/O Manager:</b> The input/output manager coordinates data transfer between memory and external devices. It manages buffering, caching, and device scheduling to ensure efficient and conflict-free I/O operations.
+</p>
+
+<p>
+<b>In Summary:</b> The internal components of an operating system work together as a layered structure. The kernel forms the core, while shells, libraries, and managers build around it to provide user interaction and system services. This organized design ensures efficiency, reliability, and security in modern computing systems.
+</p>
+
+</p></div>
+</section>
+
+<!-- ================= MEMORY ================= -->
+<section id="memory" class="reveal">
+<div class="title"><h2>Memory Management in Depth</h2></div>
+<div class="card"><p>
+Memory management ensures that each process receives sufficient memory while preventing interference between processes. The OS tracks which memory regions are free or allocated. Allocation strategies such as first-fit, best-fit, and worst-fit are used.
+
+Paging divides memory into fixed-size blocks called pages. The OS maps virtual pages to physical frames, allowing programs to run even when not fully loaded into RAM.
+
+Segmentation divides memory based on logical sections such as code, data, and stack. Combining segmentation with paging improves flexibility.
+
+Virtual memory uses disk space as secondary memory. Page replacement algorithms like FIFO, LRU, and Optimal determine which pages to swap out when memory is full.
+
+Efficient memory management improves system performance, prevents crashes, and supports multitasking.
+<br>
+<p>
+Memory management is one of the most crucial responsibilities of an operating system. It ensures that every running process receives the memory it needs while preventing interference between programs. Efficient memory management improves system performance, enables multitasking, and maintains system stability.
+</p>
+
+<p>
+<b>1. Basic Concept of Memory Management:</b> The operating system keeps track of all memory locations, determining which parts are currently in use and which are free. When a process starts, the OS allocates memory to it; when the process terminates, the OS deallocates that memory for reuse. Proper tracking prevents memory overlap and data corruption.
+</p>
+
+<p>
+<b>2. Memory Allocation Techniques:</b> To assign memory efficiently, the OS uses allocation strategies such as First-Fit, Best-Fit, and Worst-Fit. These techniques decide where in memory a new process should be placed. Choosing the right strategy reduces fragmentation and improves utilization.
+</p>
+
+<p>
+<b>3. Fragmentation:</b> Fragmentation occurs when memory is wasted due to inefficient allocation. Internal fragmentation happens when allocated memory blocks are larger than needed. External fragmentation occurs when free memory is split into small scattered blocks, making it difficult to allocate large contiguous regions. Operating systems use compaction and paging to reduce fragmentation problems.
+</p>
+
+<p>
+<b>4. Paging:</b> Paging divides physical memory into fixed-size blocks called frames, and logical memory into pages of the same size. The OS maintains a page table to map pages to frames. Paging eliminates external fragmentation and allows non-contiguous memory allocation, improving flexibility and efficiency.
+</p>
+
+<p>
+<b>5. Segmentation:</b> Segmentation divides memory into variable-sized segments based on logical program units such as code, data, and stack. Each segment has a base address and limit. Segmentation supports protection and sharing but can suffer from external fragmentation.
+</p>
+
+<p>
+<b>6. Virtual Memory:</b> Virtual memory allows execution of programs larger than the available physical RAM. It uses disk storage as a backup memory. Only required parts of a program are loaded into RAM on demand, a technique known as demand paging. This significantly increases memory capacity and system performance.
+</p>
+
+<p>
+<b>7. Page Replacement Algorithms:</b> When physical memory is full, the OS must replace existing pages to load new ones. Page replacement algorithms such as First-In-First-Out (FIFO), Least Recently Used (LRU), and Optimal determine which pages to remove. Efficient replacement minimizes page faults and improves execution speed.
+</p>
+
+<p>
+<b>8. Thrashing:</b> Thrashing occurs when the system spends more time swapping pages in and out of memory than executing processes. This results from insufficient memory or poor scheduling. The OS detects thrashing and reduces multiprogramming levels to restore performance.
+</p>
+
+<p>
+<b>In Summary:</b> Memory management techniques such as allocation strategies, paging, segmentation, and virtual memory allow modern operating systems to run large and multiple programs efficiently. Effective memory management is essential for achieving high performance, reliability, and scalability in computing systems.
+</p>
+
+</p></div>
+</section>
+
+<!-- ================= PROCESS ================= -->
+<section id="process" class="reveal">
+<div class="title"><h2>Process and Thread Management</h2></div>
+<div class="card"><p>
+ <h1>🖥️ Process and Thread Management in Operating Systems</h1>
+
+    <h2>Process Management</h2>
+    <p><strong>Definition:</strong> A process is a program in execution, represented by a <strong>Process Control Block (PCB)</strong> that stores its state, program counter, registers, and memory information.</p>
+    <p><strong>Components of a Process:</strong></p>
+    <ul>
+        <li><strong>Stack:</strong> Stores temporary data like function parameters and return addresses.</li>
+        <li><strong>Heap:</strong> Dynamically allocated memory during runtime.</li>
+        <li><strong>Text:</strong> The actual program code.</li>
+        <li><strong>Data:</strong> Global and static variables.</li>
+    </ul>
+    <p><strong>Key Functions of Process Management:</strong></p>
+    <ul>
+        <li><strong>Creation & Termination:</strong> OS creates processes (parent/child) and terminates them when complete.</li>
+        <li><strong>Scheduling:</strong> Decides which process runs on the CPU (using algorithms like FCFS, Round Robin, Priority Scheduling).</li>
+        <li><strong>Context Switching:</strong> Saves the state of one process and loads another, enabling multitasking.</li>
+        <li><strong>Inter-Process Communication (IPC):</strong> Mechanisms like pipes, message queues, and shared memory allow processes to exchange data.</li>
+        <li><strong>Isolation:</strong> Processes are independent; they don’t share memory unless explicitly allowed, which improves stability and security.</li>
+    </ul>
+<br>
+    <h2>⚡ Thread Management</h2>
+    <p><strong>Definition:</strong> A thread is the smallest unit of CPU execution within a process. Multiple threads can exist in a single process, sharing memory and resources.</p>
+    <p><strong>Advantages of Threads:</strong></p>
+    <ul>
+        <li><strong>Lightweight:</strong> Faster to create and terminate compared to processes.</li>
+        <li><strong>Shared Resources:</strong> Threads within a process share code, data, and files, reducing overhead.</li>
+        <li><strong>Concurrency:</strong> Enables parallel execution (e.g., one thread handles user input while another processes data).</li>
+    </ul>
+    <p><strong>Key Functions of Thread Management:</strong></p>
+    <ul>
+        <li><strong>Creation & Termination:</strong> OS provides APIs for creating and managing threads.</li>
+        <li><strong>Scheduling:</strong> Threads are scheduled similarly to processes but with finer granularity.</li>
+        <li><strong>Synchronization:</strong> Mechanisms like mutexes, semaphores, and monitors prevent race conditions when threads access shared resources.</li>
+        <li><strong>Communication:</strong> Since threads share memory, communication is simpler but requires careful synchronization to avoid conflicts.</li>
+    </ul>
+<br>
+    <h2>🔑 Comparison Table</h2>
+    <table>
+        <tr>
+            <th>Aspect</th>
+            <th>Process</th>
+            <th>Thread</th>
+        </tr>
+        <tr>
+            <td><strong>Definition</strong></td>
+            <td>Program in execution</td>
+            <td>Lightweight unit within process</td>
+        </tr>
+        <tr>
+            <td><strong>Memory</strong></td>
+            <td>Separate memory space</td>
+            <td>Shared memory within process</td>
+        </tr>
+        <tr>
+            <td><strong>Creation Cost</strong></td>
+            <td>High (PCB, memory allocation)</td>
+            <td>Low (shares resources)</td>
+        </tr>
+        <tr>
+            <td><strong>Communication</strong></td>
+            <td>IPC mechanisms (pipes, queues)</td>
+            <td>Direct via shared memory</td>
+        </tr>
+        <tr>
+            <td><strong>Isolation</strong></td>
+            <td>Strong isolation</td>
+            <td>Weak isolation</td>
+        </tr>
+        <tr>
+            <td><strong>Scheduling</strong></td>
+            <td>Managed by OS scheduler</td>
+            <td>Managed at finer granularity</td>
+        </tr>
+    </table> 
+    <br>
+
+    <h2>⚠️ Challenges & Considerations</h2>
+    <ul>
+        <li><strong>Deadlocks:</strong> Improper synchronization can cause processes/threads to wait indefinitely.</li>
+        <li><strong>Race Conditions:</strong> Threads accessing shared data simultaneously may cause inconsistent results.</li>
+        <li><strong>Resource Management:</strong> Balancing CPU, memory, and I/O usage is critical for performance.</li>
+        <li><strong>Security:</strong> Processes are safer due to isolation; threads are more vulnerable if not managed properly.</li>
+    </ul>
+
+    <p><strong>👉 In short:</strong> <em>Process management ensures stability and fairness across programs, while thread management boosts efficiency and responsiveness within a program. Together, they form the backbone of multitasking in modern operating systems.</em></p>
+</body>
+</html>
+
+</p></div>
+</section>
+
+<!-- ================= FILE SYSTEM ================= -->
+<section id="files" class="reveal">
+<div class="title"><h2>File Systems and Storage</h2></div>
+<div class="card"><p>
+A file system defines how data is stored, accessed, and organized on storage devices. Files are logical collections of data with attributes such as name, size, and permissions.
+
+Directory structures can be single-level, two-level, tree-structured, or graph-based. Modern OS use hierarchical tree structures.
+
+File allocation methods include contiguous allocation, linked allocation, and indexed allocation.
+
+Journaling file systems ensure data integrity after crashes. Examples include NTFS, ext4, and APFS.
+
+Storage management also involves disk scheduling algorithms such as FCFS, SSTF, SCAN, and C-SCAN.
+<br>
+<p>
+File systems and storage management form a fundamental part of an operating system. They define how data is stored, organized, accessed, and protected on storage devices such as hard disks, SSDs, and flash memory. Without a structured file system, locating and managing data would be extremely inefficient.
+</p>
+
+<p>
+<b>1. Concept of a File System:</b> A file system is a logical method for organizing data into files and directories. A file is a named collection of related data stored on secondary storage. The operating system provides operations to create, delete, open, read, write, and close files. Directories act as containers that group files and enable hierarchical organization.
+</p>
+
+<p>
+<b>2. Directory Structures:</b> Operating systems use various directory structures to organize files. Single-level directories store all files in one location. Two-level directories separate user files. Tree-structured directories form a hierarchical structure with parent and child folders. Modern systems use tree-based directories as they allow easy navigation and better organization.
+</p>
+
+<p>
+<b>3. File Allocation Methods:</b> File systems use different strategies to allocate storage space for files. Contiguous allocation stores a file in consecutive memory blocks, providing fast access but causing external fragmentation. Linked allocation stores file blocks as a linked list, eliminating fragmentation but slowing direct access. Indexed allocation uses an index block to store pointers to file blocks, combining advantages of both methods.
+</p>
+
+<p>
+<b>4. File Access Methods:</b> The OS provides multiple access methods for reading and writing data. Sequential access reads data in order from beginning to end. Direct (random) access allows reading or writing at any position in a file. Indexed access combines sequential and direct access using an index to locate records efficiently.
+</p>
+
+<p>
+<b>5. Free Space Management:</b> The operating system keeps track of free disk space to allocate storage for new files. Common techniques include bitmaps, linked lists, and grouping methods. Efficient free space management ensures optimal disk usage and reduces file creation time.
+</p>
+
+<p>
+<b>6. Disk Scheduling:</b> When multiple read/write requests occur, the OS decides the order of servicing them using disk scheduling algorithms. Common algorithms include First-Come-First-Serve (FCFS), Shortest Seek Time First (SSTF), SCAN, and C-SCAN. Proper scheduling reduces seek time and improves disk performance.
+</p>
+
+<p>
+<b>7. Journaling File Systems:</b> Modern file systems use journaling to prevent data corruption after crashes. Before changes are committed, they are recorded in a log (journal). If a crash occurs, the system recovers using the journal, ensuring file system integrity. Examples include NTFS, ext4, and APFS.
+</p>
+
+<p>
+<b>8. Storage Technologies:</b> Storage devices have evolved from magnetic hard disks to solid-state drives and cloud storage. SSDs provide faster access and lower power consumption. Cloud storage enables remote data access and backup. The OS manages these storage technologies seamlessly, providing a unified view to users.
+</p>
+
+<p>
+<b>In Summary:</b> File systems and storage management allow users and applications to store and retrieve data reliably. Through directory organization, allocation strategies, access methods, and scheduling algorithms, the operating system ensures efficient use of storage resources and maintains data integrity in modern computing environments.
+</p>
+
+</p></div>
+</section>
+
+<!-- ================= SECURITY ================= -->
+<section id="security" class="reveal">
+<div class="title"><h2>Security and Protection</h2></div>
+<div class="card"><p>
+Security in operating systems protects data and system resources from unauthorized access and malicious attacks.
+
+Authentication verifies user identity using passwords, biometrics, or tokens. Authorization defines access rights to files and resources.
+
+Encryption protects data confidentiality during storage and transmission.
+
+Sandboxing isolates applications to prevent harmful actions. Firewalls and antivirus tools provide additional defense layers.
+
+Modern OS integrate secure boot, kernel protection, and intrusion detection to ensure trust and integrity.
+<br>
+<p>
+Security and protection in an Operating System ensure that system resources, data, and processes are safeguarded from unauthorized access or malicious activities.<br><br>
+
+The OS provides <strong>authentication</strong> mechanisms such as passwords, PINs, or biometrics to verify user identity before granting access.<br><br>
+
+Once authenticated, <strong>authorization</strong> determines what resources a user or process can access. This is often managed through permissions and access control lists (ACLs).<br><br>
+
+To maintain confidentiality, the OS may use <strong>encryption</strong> techniques to protect sensitive data stored on disk or transmitted over networks.<br><br>
+
+The OS also enforces <strong>protection mechanisms</strong> like memory isolation, preventing one process from interfering with another. This ensures stability and prevents accidental or intentional corruption of data.<br><br>
+
+Additionally, <strong>firewalls, antivirus tools, and intrusion detection systems</strong> can be integrated to monitor and block suspicious activities.<br><br>
+
+Overall, security and protection in an OS are critical for maintaining system integrity, ensuring user privacy, and defending against threats in both personal and enterprise environments.
+</p>
+<br>
+<p>
+Security and protection in an operating system are critical for safeguarding system resources, user data, and running processes from unauthorized access, misuse, or malicious attacks. As modern systems handle sensitive personal, financial, and organizational data, robust security mechanisms have become an essential part of OS design.
+</p>
+
+<p>
+<b>1. Difference Between Security and Protection:</b> Protection refers to internal control mechanisms that regulate access to system resources by processes and users. Security focuses on defending the system against external threats such as hackers, malware, and network intrusions. Together, they ensure that system resources are used safely and legitimately.
+</p>
+
+<p>
+<b>2. Authentication:</b> Authentication is the process of verifying the identity of a user or process before granting system access. Common authentication methods include passwords, PINs, biometric verification (fingerprints, facial recognition), and multi-factor authentication. Strong authentication prevents unauthorized entry into the system.
+</p>
+
+<p>
+<b>3. Authorization and Access Control:</b> Once authenticated, users must be granted appropriate permissions. Authorization determines what actions a user or process is allowed to perform. Access control mechanisms such as Access Control Lists (ACLs), role-based access control, and capability lists enforce these permissions within the operating system.
+</p>
+
+<p>
+<b>4. Protection Domains:</b> A protection domain defines a set of resources and permitted operations for a process or user. Each program executes within a domain, ensuring that it cannot access resources outside its authorization. This prevents accidental or malicious interference between processes.
+</p>
+
+<p>
+<b>5. Encryption:</b> Encryption converts data into unreadable formats to prevent unauthorized access during storage or transmission. Operating systems support encryption for files, disks, and network communications. This ensures confidentiality even if data is intercepted or stolen.
+</p>
+
+<p>
+<b>6. Malware Protection:</b> The OS incorporates mechanisms to detect and prevent viruses, worms, trojans, and spyware. Techniques include antivirus scanning, sandboxing of untrusted applications, and execution control policies. Secure OS design minimizes the impact of malicious software.
+</p>
+
+<p>
+<b>7. Secure Boot and Trusted Execution:</b> Secure boot ensures that only verified and trusted software is loaded during system startup. Trusted execution environments provide isolated regions for running sensitive applications securely. These features protect the system from low-level attacks.
+</p>
+
+<p>
+<b>8. Auditing and Logging:</b> Operating systems maintain logs of user activities, access attempts, and system events. Auditing helps detect suspicious behavior and supports forensic analysis after security incidents.
+</p>
+
+<p>
+<b>9. Firewalls and Network Security:</b> Built-in firewalls monitor and control network traffic based on security rules. They protect the system from unauthorized network access and cyber-attacks originating from external networks.
+</p>
+
+<p>
+<b>In Summary:</b> Security and protection mechanisms ensure confidentiality, integrity, and availability of system resources. Through authentication, access control, encryption, malware defense, and secure system design, operating systems provide a trusted environment for users and applications in an increasingly connected digital world.
+</p>
+
+</p></div>
+</section>
+
+<!-- ================= ARCHITECTURE ================= -->
+<section id="architecture" class="reveal">
+<div class="title"><h2>Interactive Kernel Architecture</h2></div>
+<p style="text-align:center;color:var(--sub)">Click each layer to learn more</p>
+<div class="diagram">
+<div class="layer" onclick="showInfo('apps')">Applications</div>
+<div class="layer" onclick="showInfo('shell')">Shell / UI</div>
+<div class="layer" onclick="showInfo('kernel')">Kernel Core</div>
+<div class="layer" onclick="showInfo('drivers')">Device Drivers</div>
+<div class="layer" onclick="showInfo('hardware')">Hardware</div>
+</div>
+<p id="infoBox" class="info"></p>
+</section>
+
+
+<!-- ================= FUTURE ================= -->
+<section id="future" class="reveal">
+<div class="title"><h2>Future of Operating Systems</h2></div>
+<div class="card">
+    <div style="display:flex; justify-content:center; align-items:center; height:25px;"></div>
+    <img src="future.jpeg" style="width:100%; max-width:686px; height:auto;">
+<p>
+Future operating systems will integrate artificial intelligence to optimize performance automatically. They will dynamically allocate resources based on user behavior and workload prediction.
+
+Cloud-native operating systems will seamlessly distribute computation across local and remote servers. Virtualization and containerization will remain core technologies.
+
+Quantum computing will require revolutionary OS designs capable of handling qubits and quantum algorithms.
+
+Security will become even more critical, with AI-driven threat detection and zero-trust architectures.
+
+Ultimately, operating systems will become invisible, intelligent, and deeply integrated into everyday life.
+<br>
+<p>
+The future of operating systems is evolving rapidly due to advancements in hardware, artificial intelligence, networking, and user experience design. Modern operating systems are no longer limited to managing computers alone — they now power smartphones, smart homes, autonomous vehicles, cloud servers, and even wearable devices. As technology progresses, operating systems will continue transforming to meet new computing demands.
+</p>
+
+<p>
+<b>1. AI-Integrated Operating Systems:</b><br>
+Future operating systems will deeply integrate artificial intelligence to improve system efficiency and user experience. AI-driven OS kernels will predict resource usage, optimize memory allocation, and schedule processes intelligently. Virtual assistants will become core system components, enabling natural voice and gesture-based interactions with computers.
+</p>
+
+<p>
+<b>2. Cloud-Centric Operating Systems:</b><br>
+Cloud computing is shaping the next generation of operating systems. Future OS platforms will rely more on cloud storage, cloud processing, and remote application execution. This will allow lightweight devices to perform heavy tasks by offloading computations to cloud servers, reducing local hardware requirements.
+</p>
+
+<p>
+<b>3. Distributed and Edge OS:</b><br>
+With the rise of Internet of Things (IoT) and edge computing, operating systems will manage billions of interconnected devices. Distributed operating systems will coordinate tasks across multiple devices, while edge OS platforms will process data closer to where it is generated, reducing latency and improving real-time performance.
+</p>
+
+<p>
+<b>4. Quantum Computing Support:</b><br>
+As quantum computers become practical, new operating systems will be developed to manage quantum processors. These OS designs will handle quantum memory, qubit scheduling, and hybrid classical-quantum computing environments, opening new possibilities in scientific and cryptographic computing.
+</p>
+
+<p>
+<b>5. Enhanced Security and Privacy:</b><br>
+Future operating systems will incorporate stronger security frameworks, biometric authentication, and AI-based threat detection. Privacy-preserving architectures will give users greater control over personal data. Hardware-level security integration will become standard to counter increasingly sophisticated cyber threats.
+</p>
+
+<p>
+<b>6. Seamless Cross-Platform Experience:</b><br>
+Upcoming operating systems will offer unified experiences across phones, laptops, desktops, smart TVs, and augmented reality devices. Applications will run seamlessly across platforms without separate installations, creating a continuous digital ecosystem.
+</p>
+
+<p>
+<b>7. Sustainable and Energy-Efficient OS:</b><br>
+Energy-aware operating systems will optimize power consumption to extend battery life and reduce environmental impact. Smart scheduling and hardware control will ensure minimal energy waste in future computing devices.
+</p>
+
+<p>
+<b>In Summary:</b><br>
+The future of operating systems lies in intelligent automation, cloud integration, distributed computing, quantum support, and enhanced security. As computing becomes more immersive and interconnected, operating systems will evolve into invisible yet powerful platforms that seamlessly connect humans with digital intelligence.
+</p>
+
+</p></div>
+</section>
+
+<footer>
+<p>Complete Operating System Guide @2026 • DEVI</p>
+</footer>
+
+<script>
+// Scroll reveal
+const reveals=document.querySelectorAll('.reveal');
+window.addEventListener('scroll',()=>{reveals.forEach(r=>{const t=r.getBoundingClientRect().top;if(t<window.innerHeight-100){r.classList.add('active');}});});
+
+// Theme toggle
+document.getElementById('themeToggle').onclick=()=>{document.body.classList.toggle('light');};
+
+// Interactive kernel info
+function showInfo(type){
+const info=document.getElementById('infoBox');
+const data={
+apps:'Applications are user-level programs that request OS services through system calls.',
+shell:'Shell provides an interface for users to interact with the kernel using commands or GUI.',
+kernel:'Kernel manages CPU scheduling, memory management, and system resource control.',
+drivers:'Device drivers act as translators between hardware and the kernel.',
+hardware:'Hardware includes CPU, RAM, storage, and peripheral devices.'
+};
+info.innerText=data[type];}
+</script>
+
+</body>
+</html>
